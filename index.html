@@ -1,1 +1,55 @@
-index.html
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FB Task Center</title>
+    <script src="https://telegram.org"></script>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: var(--tg-theme-bg-color, #f5f5f5); color: var(--tg-theme-text-color, #333); margin: 0; padding: 15px; }
+        .card { background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 15px; }
+        .btn { background: #1877f2; color: white; border: none; padding: 10px 15px; border-radius: 5px; width: 100%; font-size: 16px; font-weight: bold; cursor: pointer; }
+        .nav-tabs { display: flex; justify-content: space-around; background: #fff; padding: 10px; position: fixed; bottom: 0; left: 0; width: 100%; box-shadow: 0 -2px 5px rgba(0,0,0,0.1); }
+        .tab { font-weight: bold; color: #777; cursor: pointer; padding: 5px 10px; }
+        .tab.active { color: #1877f2; border-bottom: 2px solid #1877f2; }
+        .page { display: none; padding-bottom: 60px; }
+        .page.active { display: block; }
+        input { width: 90%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="card" style="text-align: center; background: linear-gradient(135deg, #1877f2, #0056b3); color: white;">
+        <h2 id="user-name">नमस्ते, यूजर!</h2>
+        <p>आपका बैलेंस: <span id="user-coins" style="font-size: 20px; font-weight: bold;">100</span> 🪙 Coins</p>
+    </div>
+    <div id="page-earn" class="page active">
+        <h3>💸 टास्क पूरे करें और कमाएं</h3>
+        <div class="card">
+            <p><strong>फेसबुक पेज को फॉलो करें</strong></p>
+            <p>इनाम: 10 Coins 🪙</p>
+            <button class="btn" onclick="window.open('https://facebook.com', '_blank')">ओपन फेसबुक लिंक</button>
+            <input type="file" accept="image/*" style="margin-top:10px;">
+            <button class="btn" style="background:#28a745; margin-top:5px;" onclick="alert('स्क्रीनशॉट सबमिट हुआ!')">स्क्रीनशॉट सबमिट करें</button>
+        </div>
+    </div>
+    <div id="page-promote" class="page">
+        <h3>🚀 फेसबुक फॉलोअर्स बढ़ाएं</h3>
+        <div class="card">
+            <input type="url" placeholder="https://facebook.com">
+            <input type="number" placeholder="कितने फॉलोअर्स चाहिए?">
+            <button class="btn" onclick="alert('ऑर्डर लग गया!')">ऑर्डर लगाएं (10 Coins/Follow)</button>
+        </div>
+    </div>
+    <div class="nav-tabs">
+        <div class="tab active" onclick="switchTab('earn')">🪙 कमाएं</div>
+        <div class="tab" onclick="switchTab('promote')">📢 प्रमोट करें</div>
+    </div>
+    <script>
+        function switchTab(tabName) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page-' + tabName).classList.add('active');
+        }
+    </script>
+</body>
+</html>
+
